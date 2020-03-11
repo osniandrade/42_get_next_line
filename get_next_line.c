@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:56 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/11 16:35:28 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/11 18:14:37 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,18 @@ int		get_next_line(int fd, char **line)
 {
 	int			ret;
 	char		buf[BUFFER_SIZE];
-	char 		*s1 = "bolinho";
+	static char	*s;
 
-	s1 = ft_strjoin("", "");
-	*line = s1;
 	if (read(fd, buf, BUFFER_SIZE) == -1)
 		return (-1);
-	if ((ret = read(fd, buf, BUFFER_SIZE)) == 0)
-		s1 = ft_strjoin(s1, buf);
-	while ((ret = read(fd, buf, BUFFER_SIZE)))
+	if (!s)
+		if (!(s = (char *)malloc(sizeof(char))))
+			return (NULL);
+	*line = s;
+	while ((ret = read(fd, buf, BUFFER_SIZE)) != 0)
 	{
-		s1 = ft_strjoin(s1, buf);
+		if (ft_strchr(buf))
+			ft_strjoin()
 	}
 	return (1);
 }
