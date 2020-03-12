@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 16:46:24 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/12 16:48:24 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/12 19:15:28 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (ret);
 }
 
-int		ft_strchr(char *s)
+int			ft_strchr(char *s)
 {
 	int i;
 
@@ -62,7 +62,7 @@ int		ft_strchr(char *s)
 	return (0);
 }
 
-char	*ft_strdup(char *s1)
+char		*ft_strdup(char *s1)
 {
 	char	*s2;
 	char	*str;
