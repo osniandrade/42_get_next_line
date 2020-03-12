@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ocarlos- <ocarlos-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:56 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/11 18:14:37 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/11 21:13:19 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#define BUF_SIZE 1
+#define BUFFER_SIZE 8
 
 /*
 ** A function which returns a line read from a file descriptor,
@@ -29,16 +29,21 @@ int		get_next_line(int fd, char **line)
 	char		buf[BUFFER_SIZE];
 	static char	*s;
 
-	if (read(fd, buf, BUFFER_SIZE) == -1)
+	if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
 		return (-1);
 	if (!s)
 		if (!(s = (char *)malloc(sizeof(char))))
-			return (NULL);
+			return (0);
 	*line = s;
-	while ((ret = read(fd, buf, BUFFER_SIZE)) != 0)
+	while (ret != 0)
 	{
+		s = ft_strjoin(s, buf);
 		if (ft_strchr(buf))
-			ft_strjoin()
+		{
+			ft_trim(s);
+			return(1);
+		}
+		ret = (read(fd, buf, BUFFER_SIZE));
 	}
 	return (1);
 }

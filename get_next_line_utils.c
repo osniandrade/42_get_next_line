@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ocarlos- <ocarlos-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 16:46:24 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/11 18:02:15 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/11 21:07:53 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,24 @@ char		*ft_strjoin(char const *s1, char const *s2)
 
 int		ft_strchr(char *s)
 {
+	int i;
+
+	i = 0;
 	if (!s)
-		return (NULL);
-	while (*s != '\n')
-		s++;
-	if (*s == '\n')
-		return(1)
+		return (0);
+	while (s[i] != '\n')
+		i++;
+	if (s[i] == '\n')
+		return(1);
 	return (0);
+}
+
+void	ft_trim(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\n')
+		i++;
+	s[i] = '\0';
 }
