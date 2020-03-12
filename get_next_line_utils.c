@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 16:46:24 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/12 16:14:18 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/12 16:48:24 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_strdup(char *s1)
 	char	*s2;
 	char	*str;
 
-	s2 = (char *)malloc(sizeof(char) * ft_strlen(s1));
+	s2 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	str = s2;
 	while (*s1)
 		*s2++ = *s1++;

@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:56 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/12 16:31:10 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/12 17:03:24 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_getln(char *s)
 	char	*rstr;
 
 	i = 0;
-	while (s[i] != '\n')
+	while (s[i] != '\n' && s[i] != '\0')
 		i++;
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
@@ -44,9 +44,11 @@ char	*ft_getst(char *s)
 {
 	char	*str;
 
-	while (*s != '\n')
+	while (*s != '\n' && *s != '\0')
 		s++;
-	str = ft_strdup(++s);
+	if (*s != '\0')
+		s++;
+	str = ft_strdup(s);
 	return (str);
 }
 
