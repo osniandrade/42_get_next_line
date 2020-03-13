@@ -2,3 +2,6 @@
 a.out
 .vscode/launch.json
 a.out.dSYM/Contents/Info.plist
+b.out.dSYM/Contents/Info.plist
+b.out.dSYM/Contents/Resources/DWARF/b.out
+b.out

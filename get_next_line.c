@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:56 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/12 17:17:37 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/03/13 15:40:01 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		get_next_line(int fd, char **line)
 {
 	int			ret;
 	char		*buf;
+	char		*tmp;
 	static char	*s;
 
 	ret = 1;
@@ -75,8 +76,14 @@ int		get_next_line(int fd, char **line)
 	}
 	free(buf);
 	*line = ft_getln(s);
-	s = ft_getst(s);
+	tmp = s;
 	if (ret == 0)
+	{
+		free(s);
+		s = NULL;
 		return (0);
+	}
+	s = ft_getst(s);
+	free(tmp);
 	return (1);
 }
