@@ -29,11 +29,13 @@ char		*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
 	char	*ret;
+	char	*refs1;
 	int		total;
 	int		i[2];
 
 	if (!s1 && !s2)
 		return (NULL);
+	refs1 = s1;
 	i[0] = ft_strlen((char *)s1);
 	i[1] = ft_strlen((char *)s2);
 	total = (i[0] + i[1] + 1);
@@ -45,16 +47,18 @@ char		*ft_strjoin(char *s1, char *s2)
 	while (i[1]--)
 		*result++ = *s2++;
 	*result = '\0';
-	if (s1)
-		free(s1);
+	if (refs1)
+		free(refs1);
 	return (ret);
 }
 
 int			ft_strchr(char *s)
 {
 	int i;
+	int size;
 
-	i = 0;
+	size = ft_strlen(s);
+	i = (size <= BUFFER_SIZE) ? 0 : size - BUFFER_SIZE;
 	if (!s)
 		return (0);
 	while (s[i] != '\n' && s[i] != '\0')
