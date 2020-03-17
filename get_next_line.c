@@ -60,7 +60,7 @@ int		get_next_line(int fd, char **line)
 	static char	*s;
 
 	ret = 1;
-	if (!line || !fd || BUFFER_SIZE <= 0)
+	if (!line || fd <= 0 || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
