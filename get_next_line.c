@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:56 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/04/25 09:53:51 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/04/25 11:00:38 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_getst(char *s)
 	return (str);
 }
 
-int		ft_mainloop(static char *s, int ret, int fd, char *buf)
+int		ft_mainloop(char *s, int ret, int fd, char *buf)
 {
 	while (ft_strchr(s) != 1 && ret != 0)
 	{
@@ -62,7 +62,7 @@ int		ft_mainloop(static char *s, int ret, int fd, char *buf)
 			return (-1);
 		}
 		buf[ret] = '\0';
-		s = strjoin(s, buf);
+		s = ft_strjoin(s, buf);
 	}
 	free(buf);
 	return (1);
@@ -77,7 +77,6 @@ int		get_next_line(int fd, char **line)
 	static char	*s;
 
 	ret = 1;
-	r = 0;
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))

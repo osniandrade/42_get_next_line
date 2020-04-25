@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 16:51:46 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/13 14:37:39 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/04/25 10:58:06 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int		get_next_line(int fd, char **line);
 char	*ft_getln(char *s);
 char	*ft_getst(char *s);
 void	ft_memfix(char *tmp, char *s, char *buf);
-int		ft_mainloop(static char *s, int ret, int fd, char *buf);
+int		ft_mainloop(char *s, int ret, int fd, char *buf);
 
 #endif
