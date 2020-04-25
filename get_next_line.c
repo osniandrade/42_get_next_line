@@ -52,7 +52,7 @@ char		*ft_getst(char *s)
 	return (str);
 }
 
-s_lndata	ft_mainloop(s_lndata ln)
+t_lndata	ft_mainloop(t_lndata ln)
 {
 	while ((ft_strchr(ln.s)) != 1 && ln.ret != 0)
 	{
@@ -71,7 +71,7 @@ s_lndata	ft_mainloop(s_lndata ln)
 
 int			get_next_line(int fd, char **line)
 {
-	static s_lndata	ln;
+	static t_lndata	ln;
 	char			*tmp;
 
 	ln.ret = 1;

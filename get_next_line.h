@@ -23,15 +23,15 @@ typedef struct	s_lndata
 	int		fd;
 	char	*buf;
 	char	*s;
-}				s_lndata;
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(const char *s);
-int		ft_strchr(char *s);
-char	*ft_strdup(char *s1);
-int		get_next_line(int fd, char **line);
-char	*ft_getln(char *s);
-char	*ft_getst(char *s);
-void	ft_memfix(char *tmp, char *s, char *buf);
-s_lndata	ft_mainloop(s_lndata ln);
+}				t_lndata;
+char			*ft_strjoin(char *s1, char *s2);
+size_t			ft_strlen(const char *s);
+int				ft_strchr(char *s);
+char			*ft_strdup(char *s1);
+int				get_next_line(int fd, char **line);
+char			*ft_getln(char *s);
+char			*ft_getst(char *s);
+void			ft_memfix(char *tmp, char *s, char *buf);
+t_lndata		ft_mainloop(t_lndata ln);
 
 #endif
