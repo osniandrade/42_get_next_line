@@ -22,7 +22,7 @@
 ** -1 : An error happened
 */
 
-char	*ft_getln(char *s)
+char		*ft_getln(char *s)
 {
 	int		i;
 	char	*str;
@@ -40,7 +40,7 @@ char	*ft_getln(char *s)
 	return (rstr);
 }
 
-char	*ft_getst(char *s)
+char		*ft_getst(char *s)
 {
 	char	*str;
 
@@ -52,7 +52,7 @@ char	*ft_getst(char *s)
 	return (str);
 }
 
-t_lndata	ft_mainloop(t_lndata ln)
+s_lndata	ft_mainloop(s_lndata ln)
 {
 	while ((ft_strchr(ln.s)) != 1 && ln.ret != 0)
 	{
@@ -69,9 +69,9 @@ t_lndata	ft_mainloop(t_lndata ln)
 	return (ln);
 }
 
-int		get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
-	static t_lndata	ln;
+	static s_lndata	ln;
 	char			*tmp;
 
 	ln.ret = 1;
