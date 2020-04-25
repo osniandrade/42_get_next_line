@@ -6,7 +6,7 @@
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:56 by ocarlos-          #+#    #+#             */
-/*   Updated: 2020/03/13 15:40:01 by ocarlos-         ###   ########.fr       */
+/*   Updated: 2020/04/25 11:00:38 by ocarlos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*ft_getst(char *s)
 lndata	ft_mainloop(lndata ln)
 {
 	while((ft_strchr(ln.s)) != 1 && ln.ret != 0)
+
 	{
 		if ((ln.ret = read(ln.fd, ln.buf, BUFFER_SIZE)) == -1)
 		{
@@ -87,6 +88,7 @@ int		get_next_line(int fd, char **line)
 	*line = ft_getln(ln.s);
 	tmp = ln.s;
 	if (ln.ret == 0)
+
 	{
 		free(ln.s);
 		ln.s = NULL;
