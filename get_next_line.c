@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_ln.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ocarlos- <ocarlos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -52,38 +52,48 @@ char	*ft_getst(char *s)
 	return (str);
 }
 
+lndata	ft_mainloop(lndata ln)
+{
+	while((ft_strchr(ln.s)) != 1 && ln.ret != 0)
+	{
+		if ((ln.ret = read(ln.fd, ln.buf, BUFFER_SIZE)) == -1)
+		{
+			free(ln.buf);
+			ln.ret = -1;
+			return (ln);
+		}
+		ln.buf[ln.ret] = '\0';
+		ln.s = ft_strjoin(ln.s, ln.buf);
+	}
+	free(ln.buf);
+	return(ln);
+}
+
+
 int		get_next_line(int fd, char **line)
 {
-	int			ret;
-	char		*buf;
-	char		*tmp;
-	static char	*s;
+	static lndata	ln;
+	char			*tmp;
 
-	ret = 1;
-	if (!line || fd <= 0 || BUFFER_SIZE <= 0)
+	ln.ret = 1;
+	ln.fd = fd;
+	if (!line || ln.fd <= 0 || BUFFER_SIZE <= 0)
 		return (-1);
-	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	if (!(ln.buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while ((ft_strchr(s)) != 1 && ret != 0)
+	ln = ft_mainloop(ln);
+	if(ln.ret == -1)
+		return (-1);
+	*line = ft_getln(ln.s);
+	tmp = ln.s;
+	if (ln.ret == 0)
 	{
-		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
-		{
-			free(buf);
-			return (-1);
-		}
-		buf[ret] = '\0';
-		s = ft_strjoin(s, buf);
-	}
-	free(buf);
-	*line = ft_getln(s);
-	tmp = s;
-	if (ret == 0)
-	{
-		free(s);
-		s = NULL;
+		free(ln.s);
+		ln.s = NULL;
 		return (0);
 	}
-	s = ft_getst(s);
+	ln.s = ft_getst(ln.s);
 	free(tmp);
 	return (1);
 }
+
