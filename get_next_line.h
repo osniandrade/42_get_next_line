@@ -17,13 +17,13 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-typedef struct lndata
+typedef struct	t_lndata
 {
 	int		ret;
 	int		fd;
 	char	*buf;
 	char	*s;
-}	lndata;
+}				t_lndata;
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 int		ft_strchr(char *s);
@@ -32,6 +32,6 @@ int		get_next_line(int fd, char **line);
 char	*ft_getln(char *s);
 char	*ft_getst(char *s);
 void	ft_memfix(char *tmp, char *s, char *buf);
-lndata	ft_mainloop(lndata ln);
+t_lndata	ft_mainloop(t_lndata ln);
 
 #endif
