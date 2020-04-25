@@ -25,5 +25,6 @@ int		get_next_line(int fd, char **line);
 char	*ft_getln(char *s);
 char	*ft_getst(char *s);
 void	ft_memfix(char *tmp, char *s, char *buf);
+int		ft_mainloop(static char *s, int ret, int fd, char *buf);
 
 #endif

@@ -52,6 +52,23 @@ char	*ft_getst(char *s)
 	return (str);
 }
 
+int		ft_mainloop(static char *s, int ret, int fd, char *buf)
+{
+	while (ft_strchr(s) != 1 && ret != 0)
+	{
+		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
+		{
+			free(buf);
+			return (-1);
+		}
+		buf[ret] = '\0';
+		s = strjoin(s, buf);
+	}
+	free(buf);
+	return (1);
+}
+
+
 int		get_next_line(int fd, char **line)
 {
 	int			ret;
@@ -60,21 +77,13 @@ int		get_next_line(int fd, char **line)
 	static char	*s;
 
 	ret = 1;
+	r = 0;
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while ((ft_strchr(s)) != 1 && ret != 0)
-	{
-		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
-		{
-			free(buf);
-			return (-1);
-		}
-		buf[ret] = '\0';
-		s = ft_strjoin(s, buf);
-	}
-	free(buf);
+	if (ft_mainloop(s, ret, fd, buf) == -1)
+		return (-1);
 	*line = ft_getln(s);
 	tmp = s;
 	if (ret == 0)
